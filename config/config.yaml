@@ -1,0 +1,105 @@
+# GeoIntel Satellite Military Asset Classification Configuration
+# =============================================================
+
+project:
+  name: "GeoIntel-satellite_military_asset_classification_CNN"
+  version: "1.0.0"
+  mission: "Identify small military vehicles in high-resolution satellite imagery"
+
+# Dataset Configuration
+dataset:
+  name: "MVRSD"  # Military Vehicle Remote Sensing Dataset
+  raw_path: "data/raw"
+  processed_path: "data/processed"
+  classes:
+    - "tank"
+    - "truck"
+    - "cargo"
+    - "military_vehicle"
+  # Expected directory structure for verification
+  expected_structure:
+    - "images"
+    - "labels"  # YOLO format annotations
+
+# SAHI Tiling Configuration - Critical for Small Object Detection
+tiling:
+  slice_height: 512
+  slice_width: 512
+  overlap_height_ratio: 0.2  # 20% overlap
+  overlap_width_ratio: 0.2   # 20% overlap
+  # For extremely dense imagery, increase overlap
+  dense_overlap_ratio: 0.3
+
+# Model Configuration
+model:
+  architecture: "yolov8m"  # YOLOv8-Medium
+  pretrained_weights: "yolov8m.pt"
+  input_size: 640  # YOLO native input (tiles will be processed at this size)
+  confidence_threshold: 0.25
+  iou_threshold: 0.45
+  # SAHI-specific thresholds
+  sahi_confidence: 0.3
+  sahi_iou: 0.5
+
+# Inference Configuration
+inference:
+  # Standard inference (for comparison)
+  standard:
+    enabled: true
+    resize_to: [640, 640]
+
+  # SAHI Sliced Inference (Primary Method)
+  sahi:
+    enabled: true
+    slice_size: 512
+    overlap_ratio: 0.2
+    postprocess_type: "NMS"  # Options: NMS, NMM, GREEDYNMM
+    postprocess_match_metric: "IOU"
+    postprocess_match_threshold: 0.5
+    postprocess_class_agnostic: false
+    verbose: 2  # 0=silent, 1=progress, 2=detailed
+
+# Training Configuration
+training:
+  epochs: 100
+  batch_size: 16
+  img_size: 640
+  patience: 20  # Early stopping patience
+  optimizer: "AdamW"
+  learning_rate: 0.001
+  weight_decay: 0.0005
+  augmentation:
+    hsv_h: 0.015
+    hsv_s: 0.7
+    hsv_v: 0.4
+    degrees: 0.0
+    translate: 0.1
+    scale: 0.5
+    shear: 0.0
+    flipud: 0.0
+    fliplr: 0.5
+    mosaic: 1.0
+    mixup: 0.0
+
+# Output Configuration
+output:
+  save_dir: "data/outputs"
+  save_visualizations: true
+  save_crops: true
+  export_formats:
+    - "jpg"
+    - "geojson"
+  visualization:
+    bbox_thickness: 2
+    font_scale: 0.5
+    colors:
+      tank: [0, 0, 255]      # Red (BGR)
+      truck: [0, 255, 0]     # Green (BGR)
+      cargo: [255, 0, 0]     # Blue (BGR)
+      military_vehicle: [0, 255, 255]  # Yellow (BGR)
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  save_logs: true
+  log_dir: "logs"
