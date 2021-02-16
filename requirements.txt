@@ -1,0 +1,41 @@
+# GeoIntel - Satellite Military Asset Classification
+# ===================================================
+
+# Core ML Framework
+ultralytics>=8.0.0          # YOLOv8 - Object Detection Model
+torch>=2.0.0                # PyTorch - Deep Learning Framework
+torchvision>=0.15.0         # Computer Vision Utilities
+
+# SAHI - Slicing Aided Hyper Inference (CRITICAL)
+sahi>=0.11.0                # Small object detection via tiling
+
+# Image Processing
+opencv-python>=4.8.0        # OpenCV - Image I/O and Processing
+Pillow>=10.0.0              # PIL - Image manipulation
+numpy>=1.24.0               # Numerical operations
+
+# Configuration & Data
+PyYAML>=6.0                 # YAML configuration parsing
+python-dotenv>=1.0.0        # Environment variables
+
+# Visualization
+matplotlib>=3.7.0           # Plotting and visualization
+seaborn>=0.12.0             # Statistical visualization
+
+# Jupyter Support
+jupyter>=1.0.0              # Jupyter notebooks
+ipywidgets>=8.0.0           # Interactive widgets
+
+# GIS / Geospatial (Optional)
+# geojson>=3.0.0            # GeoJSON export
+# rasterio>=1.3.0           # Geospatial raster I/O
+# shapely>=2.0.0            # Geometric operations
+
+# Logging & Monitoring
+tqdm>=4.65.0                # Progress bars
+tensorboard>=2.13.0         # Training visualization
+
+# Development Tools
+pytest>=7.0.0               # Testing
+black>=23.0.0               # Code formatting
+flake8>=6.0.0               # Linting
