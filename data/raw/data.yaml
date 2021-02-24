@@ -1,0 +1,17 @@
+# MVRSD Dataset Configuration for YOLOv8 Training
+# Military Vehicle Remote Sensing Dataset
+
+path: /Users/kunalbhujbal/Desktop/Projects/GeoIntel/data/raw
+train: images/train
+val: images/val
+
+# Class names (5 classes)
+names:
+  0: SMV   # Small Military Vehicle
+  1: LMV   # Large Military Vehicle
+  2: AFV   # Armored Fighting Vehicle
+  3: CV    # Cargo Vehicle
+  4: MCV   # Military Combat Vehicle
+
+# Number of classes
+nc: 5

@@ -12,10 +12,11 @@ dataset:
   raw_path: "data/raw"
   processed_path: "data/processed"
   classes:
-    - "tank"
-    - "truck"
-    - "cargo"
-    - "military_vehicle"
+    - "SMV"   # Small Military Vehicle
+    - "LMV"   # Large Military Vehicle
+    - "AFV"   # Armored Fighting Vehicle
+    - "CV"    # Cargo Vehicle
+    - "MCV"   # Military Combat Vehicle
   # Expected directory structure for verification
   expected_structure:
     - "images"
@@ -93,10 +94,11 @@ output:
     bbox_thickness: 2
     font_scale: 0.5
     colors:
-      tank: [0, 0, 255]      # Red (BGR)
-      truck: [0, 255, 0]     # Green (BGR)
-      cargo: [255, 0, 0]     # Blue (BGR)
-      military_vehicle: [0, 255, 255]  # Yellow (BGR)
+      SMV: [0, 0, 255]       # Red (BGR) - Small Military Vehicle
+      LMV: [0, 255, 0]       # Green (BGR) - Large Military Vehicle
+      AFV: [255, 0, 0]       # Blue (BGR) - Armored Fighting Vehicle
+      CV: [0, 255, 255]      # Yellow (BGR) - Cargo Vehicle
+      MCV: [255, 0, 255]     # Magenta (BGR) - Military Combat Vehicle
 
 # Logging Configuration
 logging:
