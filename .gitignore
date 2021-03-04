@@ -22,6 +22,11 @@ data/outputs/
 !data/raw/data.yaml
 !data/raw/labels/classes.txt
 
+# Keep assets for README
+!assets/
+!assets/*.jpg
+!assets/*.png
+
 # -----------------------------------------------------------------------------
 # Model Weights (Large - Do NOT commit)
 # -----------------------------------------------------------------------------

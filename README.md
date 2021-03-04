@@ -2,6 +2,8 @@
 
 > **SAHI-Powered Reconnaissance System for Small Object Detection in Satellite Imagery**
 
+![SAHI vs Standard Detection Comparison](assets/sahi_comparison.jpg)
+
 ## Mission
 
 Identify small military vehicles (Tanks, Trucks, Cargo) in high-resolution satellite imagery using **Slicing Aided Hyper Inference (SAHI)** to solve the critical **Small Object Problem**.
@@ -175,6 +177,8 @@ SAHI detected 35 MORE assets (291.7% improvement)
 ```
 
 ## Outputs
+
+![Sample Detection Output](assets/sample_detection.jpg)
 
 - **Visualization**: `final_map_with_tanks.jpg` - Annotated satellite image
 - **GeoJSON**: `scan_results.geojson` - For GIS integration
